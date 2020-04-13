@@ -500,6 +500,26 @@ public:
         log_sinks_.erase(std::remove(log_sinks_.begin(), log_sinks_.end(), sink), log_sinks_.end());
     }
 
+    static Severity from_string(std::string severity)
+    {
+    if (severity == "TRACE")
+        return Severity::trace;
+    else if (severity == "DEBUG")
+        return Severity::debug;
+    else if (severity == "INFO")
+        return Severity::info;
+    else if (severity == "NOTICE")
+        return Severity::notice;
+    else if (severity == "WARN")
+        return Severity::warning;
+    else if (severity == "ERROR")
+        return Severity::error;
+    else if (severity == "FATAL")
+        return Severity::fatal;
+    else
+        return Severity::info;
+    }
+
     static std::string to_string(Severity logSeverity)
     {
         switch (logSeverity)
